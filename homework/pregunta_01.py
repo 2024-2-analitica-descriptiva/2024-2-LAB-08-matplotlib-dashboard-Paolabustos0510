@@ -10,12 +10,13 @@ def pregunta_01():
 
 
     def load_data():
-        df = pd.read_csvdf = pd.read_csv(r"C:/Users/Olga/Documents/GitHub/2024-2-LAB-08-matplotlib-dashboard-Paolabustos0510/files/input/shipping-data.csv")
+        #df = pd.read_csvdf = pd.read_csv(r"C:/Users/Olga/Documents/GitHub/2024-2-LAB-08-matplotlib-dashboard-Paolabustos0510/files/input/shipping-data.csv")
+        df = pd.read_csvdf = pd.read_csv(os.path.join(os.path.dirname(__file__),"../files/input/shipping-data.csv"))
         return df
     
     
-    if not os.path.exists("C:/Users/Olga/Documents/GitHub/2024-2-LAB-08-matplotlib-dashboard-Paolabustos0510/docs"):
-        os.mkdir("C:/Users/Olga/Documents/GitHub/2024-2-LAB-08-matplotlib-dashboard-Paolabustos0510/docs")
+    if not os.path.exists(os.path.join(os.path.dirname(__file__),"../docs")):
+        os.mkdir(os.path.join(os.path.dirname(__file__),"../docs"))
 
     def create_visual_for_shipping_per_warehouse(df):
         df = df.copy ()
@@ -30,7 +31,7 @@ def pregunta_01():
         )
         plt.gca().spines["top"].set_visible(False)
         plt.gca().spines["right"].set_visible(False)
-        plt.savefig("C:/Users/Olga/Documents/GitHub/2024-2-LAB-08-matplotlib-dashboard-Paolabustos0510/docs/shipping_per_warehouse.png")
+        plt.savefig(os.path.join(os.path.dirname(__file__),"../docs/shipping_per_warehouse.png"))
 
     def create_visual_for_mode_of_shipment(df):
         df = df.copy()
@@ -42,7 +43,7 @@ def pregunta_01():
             ylabel="",
             colors=["tab:blue", "tab:orange", "tab:green"],        
         )
-        plt.savefig("C:/Users/Olga/Documents/GitHub/2024-2-LAB-08-matplotlib-dashboard-Paolabustos0510/docs/mode_of_shipment.png")
+        plt.savefig(os.path.join(os.path.dirname(__file__),"../docs/mode_of_shipment.png"))
 
     def create_visual_for_averange_customer_rating(df):
         df = df.copy()
@@ -78,7 +79,7 @@ def pregunta_01():
         plt.gca().spines["bottom"].set_color("gray")
         plt.gca().spines["top"].set_visible(False)
         plt.gca().spines["right"].set_visible(False)
-        plt.savefig("C:/Users/Olga/Documents/GitHub/2024-2-LAB-08-matplotlib-dashboard-Paolabustos0510/docs/average_customer_rating.png")
+        plt.savefig(os.path.join(os.path.dirname(__file__),"../docs/average_customer_rating.png"))
 
     def create_visual_for_weight_distribution(df):
         df = df.copy()
@@ -90,7 +91,7 @@ def pregunta_01():
         )
         plt.gca().spines["top"].set_visible(False)
         plt.gca().spines["right"].set_visible(False)
-        plt.savefig("C:/Users/Olga/Documents/GitHub/2024-2-LAB-08-matplotlib-dashboard-Paolabustos0510/docs/weight_distribution.png")
+        plt.savefig(os.path.join(os.path.dirname(__file__),"../docs/weight_distribution.png"))
 
     df = load_data()
     create_visual_for_shipping_per_warehouse(df)
@@ -98,7 +99,7 @@ def pregunta_01():
     create_visual_for_averange_customer_rating(df)
     create_visual_for_weight_distribution(df)              
 
-    ruta_html = "C:/Users/Olga/Documents/GitHub/2024-2-LAB-08-matplotlib-dashboard-Paolabustos0510/docs/index.html"
+    ruta_html = "docs/index.html"
     
     contenido_html = """
     <!DOCTYPE html>
@@ -106,12 +107,12 @@ def pregunta_01():
         <body>
             <h1>Shipping Dashboard Example</h1>
             <div style="width:45%;float:left">
-                <img src="C:/Users/Olga/Documents/GitHub/2024-2-LAB-08-matplotlib-dashboard-Paolabustos0510/docs/shipping_per_warehouse.png" alt="Fig 1">
-                <img src="C:/Users/Olga/Documents/GitHub/2024-2-LAB-08-matplotlib-dashboard-Paolabustos0510/docs/mode_of_shipment.png" alt="Fig 2">
+                <img src="docs/shipping_per_warehouse.png" alt="Fig 1">
+                <img src="docs/mode_of_shipment.png" alt="Fig 2">
             <div>
             <div style="width:45%;float:left">
-                <img src="C:/Users/Olga/Documents/GitHub/2024-2-LAB-08-matplotlib-dashboard-Paolabustos0510/docs/average_customer_rating.png" alt="Fig 3">
-                <img src="C:/Users/Olga/Documents/GitHub/2024-2-LAB-08-matplotlib-dashboard-Paolabustos0510/docs/weight_distribution.png" alt="Fig 4">
+                <img src="docs/average_customer_rating.png" alt="Fig 3">
+                <img src="docs/weight_distribution.png" alt="Fig 4">
             <div>
         <body>
     <htlm>
